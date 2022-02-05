@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChlibAlertAnim">
+        <item name="android:windowEnterAnimation">@anim/chlib_alert_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/chlib_alert_fade_out</item>
+    </style>
+
+    <style name="ChlibAlertDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+</resources>

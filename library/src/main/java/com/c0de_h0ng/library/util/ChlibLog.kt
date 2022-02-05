@@ -7,7 +7,7 @@ import java.lang.StringBuilder
 /**
  * Created by c0de_h0ng on 2022/02/05.
  */
-object HLog {
+object ChlibLog {
 
     fun debug(msg: String?) {
         if (BuildConfig.DEBUG)
