@@ -81,6 +81,50 @@ abstract class BaseBindingActivity<VD : ViewDataBinding> : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun openPhoneApp(phoneNumber: String?) {
+        if (phoneNumber != null && phoneNumber.isNotEmpty()) {
+            val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            startActivity(callIntent)
+        }
+    }
+
+    /**
+     * 스키마로 외부앱 오픈
+     * @param scheme         스키마
+     * @param appPackageName 미설치된 앱 패키지명
+     */
+    fun openSchemeExternalApp(scheme: String, appPackageName: String) {
+        val packageIntent = packageManager.getLaunchIntentForPackage(appPackageName)
+        if (packageIntent != null) {
+            //설치시
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(scheme))
+            startActivity(intent)
+        } else {
+            //미설치 시 플레이스토어 연동
+            openAppInPlayStore(appPackageName)
+        }
+    }
+
+    fun openAppInPlayStore(appPackageName: String) {
+        val url = "market://details?id=$appPackageName"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    /**
+     * 외부 브라우저
+     * @param url 외부 브라우저 URL
+     */
+    fun openExternalWeb(url: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
     /**
      * 권한 설정
      */
