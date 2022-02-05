@@ -31,13 +31,13 @@
 
             <!--타이틀-->
             <TextView
-                android:id="@+id/alert_title"
+                android:id="@+id/tv_alert"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/chlib_black_3a"
                 android:gravity="start"
-                style="@style/notosansMediumTextStyle"
+                style="@style/ChlibNotosnsMedium"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +51,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="@color/chlib_gray_61"
-                style="@style/notosansRegularTextStyle"
+                style="@style/ChlibNotosnsMedium"
                 android:lineSpacingExtra="0.5dp"
                 app:layout_constraintBottom_toTopOf="@id/button_view"
-                app:layout_constraintTop_toBottomOf="@id/alert_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_alert"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="31dp"
@@ -78,7 +78,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/chlib_green_radius_11_bg"
+                    style="@style/ChlibNotosnsMedium"
+                    android:background="@drawable/chlib_gray_radius_11_bg"
                     android:stateListAnimator="@null"
                     android:text="@{positiveString}"
                     android:onClick="@{positiveClick}"
@@ -91,7 +92,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/chlib_green_radius_11_bg"
+                    style="@style/ChlibNotosnsMedium"
+                    android:background="@drawable/chlib_yellow_radius_11_bg"
                     android:stateListAnimator="@null"
                     android:text="@{negativeString}"
                     android:onClick="@{negativeClick}"
@@ -99,39 +101,7 @@
                     android:layout_marginVertical="5dp"
                     android:visibility="@{isNegativeBtn ? View.VISIBLE : View.INVISIBLE}"/>
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:id="@+id/btn_left"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:onClick="@{negativeClick}"-->
-<!--                    android:visibility="@{isNegativeBtn ? View.VISIBLE : View.INVISIBLE}"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/alert_content"-->
-<!--                    app:layout_constraintEnd_toStartOf="@id/btn_right"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="20dp"-->
-<!--                        android:textColor="@color/black3_a"-->
-<!--                        style="@style/notosansRegularTextStyle"-->
-<!--                        android:text="@{negativeString}"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        android:layout_marginTop="9dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:layout_marginStart="12dp"-->
-<!--                        android:layout_marginEnd="11dp"/>-->
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
             </LinearLayout>
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

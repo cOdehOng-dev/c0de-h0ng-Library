@@ -16,14 +16,14 @@ class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
 
     private var activity: AppCompatActivity? = null
 
-    private var title: String? = null //제목
-    private var content: String? = null //내용
+    private var title: String? = null
+    private var content: String? = null
 
     private var positiveString: String? = null
     private var negativeString: String? = null
 
-    private var isPositiveButton = true
-    private var isNegativeButton = true
+    private var isRightButton = true
+    private var isLeftButton = true
 
     private var htmlText: Spanned? = null
 
@@ -36,7 +36,9 @@ class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
         fun onDialogClick()
     }
 
-    class Builder constructor(val activity: AppCompatActivity) {
+    class Builder constructor(
+        val activity: AppCompatActivity
+    ) {
         var title: String? = null
         var content: String? = null
         var positiveString: String? = null
@@ -125,46 +127,100 @@ class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
         this.content = builder.content
         this.positiveString = builder.positiveString ?: "확인"
         this.negativeString = builder.negativeString ?: "취소"
-        this.isPositiveButton = builder.isPositiveButton
-        this.isNegativeButton = builder.isNegativeButton
+        this.isRightButton = builder.isPositiveButton
+        this.isLeftButton = builder.isNegativeButton
         this.htmlText = builder.htmlText
         this.onPositiveClick = builder.onPositiveClick
         this.onNegativeClick = builder.onNegativeClick
     }
 
-    fun show() {
+    fun show(leftButtonBgResId: Int = 0, rightButtonBgResId: Int = 0) {
         activity?.let {
             if (!it.isDestroyed) {
                 val alert: ChlibAlertBinding = DataBindingUtil.inflate(it.layoutInflater, R.layout.chlib_alert, null, false)
-                if (title != null && title!!.isNotEmpty()) {
-                    alert.alertTitle.text = title
-                }
-                if (content != null && content!!.isNotEmpty()) {
-                    alert.alertContent.text = content
-                } else {
-                    alert.alertContent.text = htmlText
-                }
+                alert.run {
+                    if (title != null && title!!.isNotEmpty()) {
+                        tvAlert.text = title
+                    }
+                    if (content != null && content!!.isNotEmpty()) {
+                        alertContent.text = content
+                    } else {
+                        alertContent.text = htmlText
+                    }
 
-                alert.positiveClick = this
-                alert.negativeClick = this
-                alert.positiveString = positiveString
-                alert.negativeString = negativeString
-                alert.isPositiveBtn = isPositiveButton
-                alert.isNegativeBtn = isNegativeButton
+                    positiveClick = this@ChlibAlert
+                    negativeClick = this@ChlibAlert
+                    positiveString = positiveString
+                    negativeString = negativeString
+                    isPositiveBtn = isRightButton
+                    isNegativeBtn = isLeftButton
 
-                if (!isNegativeButton) alert.btnLeft.visibility = View.GONE
-                if (!isPositiveButton) alert.btnRight.visibility = View.GONE
+                    if (!isLeftButton) {
+                        btnLeft.visibility = View.GONE
+                    } else {
+                        if (leftButtonBgResId > 0) {
+                            btnLeft.setBackgroundResource(leftButtonBgResId)
+                        }
+                    }
+                    if (!isRightButton) {
+                        btnRight.visibility = View.GONE
+                    } else {
+                        if (rightButtonBgResId > 0) {
+                            btnRight.setBackgroundResource(rightButtonBgResId)
+                        }
+                    }
+                }
 
                 currentAlert = AppCompatDialog(it, R.style.ChlibAlertDialog)
-                currentAlert!!.setContentView(alert.root)
-                currentAlert!!.setCancelable(false)
-                currentAlert!!.setOnKeyListener { _: DialogInterface?, keyCode: Int, _: KeyEvent? -> KeyEvent.KEYCODE_BACK == keyCode }
-                val window = currentAlert!!.window
-                window?.let { window.attributes.windowAnimations = R.style.ChlibAlertAnim }
-                currentAlert!!.show()
+                currentAlert!!.run {
+                    setContentView(alert.root)
+                    setCancelable(false)
+                    setOnKeyListener { _: DialogInterface?, keyCode: Int, _: KeyEvent? -> KeyEvent.KEYCODE_BACK == keyCode }
+                    val window = window
+                    window?.let { window.attributes.windowAnimations = R.style.ChlibAlertAnim }
+                    show()
+                }
             }
         }
     }
+
+//    fun show() {
+//        activity?.let {
+//            if (!it.isDestroyed) {
+//                val alert: ChlibAlertBinding = DataBindingUtil.inflate(it.layoutInflater, R.layout.chlib_alert, null, false)
+//                alert.run {
+//                    if (title != null && title!!.isNotEmpty()) {
+//                        tvAlert.text = title
+//                    }
+//                    if (content != null && content!!.isNotEmpty()) {
+//                        alertContent.text = content
+//                    } else {
+//                        alertContent.text = htmlText
+//                    }
+//
+//                    positiveClick = this@ChlibAlert
+//                    negativeClick = this@ChlibAlert
+//                    positiveString = positiveString
+//                    negativeString = negativeString
+//                    isPositiveBtn = isRightButton
+//                    isNegativeBtn = isLeftButton
+//
+//                    if (!isLeftButton) btnLeft.visibility = View.GONE
+//                    if (!isRightButton) btnRight.visibility = View.GONE
+//                }
+//
+//                currentAlert = AppCompatDialog(it, R.style.ChlibAlertDialog)
+//                currentAlert!!.run {
+//                    setContentView(alert.root)
+//                    setCancelable(false)
+//                    setOnKeyListener { _: DialogInterface?, keyCode: Int, _: KeyEvent? -> KeyEvent.KEYCODE_BACK == keyCode }
+//                    val window = window
+//                    window?.let { window.attributes.windowAnimations = R.style.ChlibAlertAnim }
+//                    show()
+//                }
+//            }
+//        }
+//    }
 
 
     override fun onClick(v: View) {

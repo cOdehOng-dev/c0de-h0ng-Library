@@ -12,5 +12,16 @@ class MainActivity : AppCompatActivity() {
 
         val  s = compareCurrentInputDate("yyyy-MM-dd HH:mm:ss", "2021.02.05 23:50:00")
         ChlibLog.debug("날짜 $s")
+
+        ChlibAlert.Builder(this)
+            .setTitle("알림")
+            .setContent("테스트")
+            .build()
+            .show()
+//        ChlibAlert.Builder(this)
+//            .setTitle("알림")
+//            .setContent("테스트")
+//            .build()
+//            .show(R.drawable.chlib_white_radius_4dp_bg, R.drawable.chgr)
     }
 }

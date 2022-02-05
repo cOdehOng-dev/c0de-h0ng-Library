@@ -11,4 +11,8 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
     </style>
+
+    <style name="ChlibNotosnsMedium" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/notosan_medium</item>
+    </style>
 </resources>
