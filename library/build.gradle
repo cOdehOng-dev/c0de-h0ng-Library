@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
+
 android {
     compileSdk 31
 
@@ -30,6 +31,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+}
+
+ext {
+    koin_version = '2.2.3' // koin 버전
+    retrofit2_version = '2.9.0' // Retrofit2 버전
+    glide_version = '4.12.0' // Glide
+    room_version = '2.4.1'
+    lifecycle_version ='2.4.0'
+    dagger_version = '2.38.1'
+    dagger_compiler_version = '2.37'
 }
 
 dependencies {
@@ -40,6 +52,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+
+    // Okhttp
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 }
 
 afterEvaluate {
