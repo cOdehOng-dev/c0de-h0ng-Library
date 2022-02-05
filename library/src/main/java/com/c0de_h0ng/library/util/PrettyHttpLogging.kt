@@ -1,4 +1,4 @@
-package com.c0de_h0ng.library
+package com.c0de_h0ng.library.util
 
 import android.util.Log
 import com.google.gson.GsonBuilder
