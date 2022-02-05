@@ -37,5 +37,5 @@ dependencies {
 + PrettyLogging
   + HttpLoggingInterceptor.Logger을 Custom하여 Log에 pretty하게 출력되게 하는 기능
 
-## CustomView List
+## CustomView
 - Comming Soon
