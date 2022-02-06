@@ -13,14 +13,6 @@ import com.c0de_h0ng.library.const.Const
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-//    protected inline fun <reified T: ViewDataBinding> bindingView(@LayoutRes resId: Int) : Lazy<T> =
-//        lazy {
-//            DataBindingUtil.setContentView<T>(this, resId)
-//                .apply {
-//                    this.lifecycleOwner = this@BaseActivity
-//                }
-//        }
-
 
     fun openActivity(dest: Class<*>) {
         val intent = Intent(applicationContext, dest)

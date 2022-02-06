@@ -12,7 +12,7 @@ import com.c0de_h0ng.library.databinding.ChlibAlertBinding
 /**
  * Created by c0de_h0ng on 2022/02/06.
  */
-class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
+private class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
 
     private var activity: AppCompatActivity? = null
 

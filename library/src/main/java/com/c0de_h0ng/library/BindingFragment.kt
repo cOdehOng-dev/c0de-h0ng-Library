@@ -1,4 +1,4 @@
-package com.c0de_h0ng.library.base
+package com.c0de_h0ng.library
 
 import android.content.Context
 import android.os.Bundle
@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment
 /**
  * Created by c0de_h0ng on 2022/02/06.
  */
-abstract class BaseBindingFragment<VD: ViewDataBinding> : Fragment() {
+abstract class BindingFragment<VD: ViewDataBinding> : Fragment() {
 
-    lateinit var rootActivity: BaseBindingActivity<*>
+    lateinit var rootActivity: BindingActivity<*>
 
     protected lateinit var binding: VD
 
@@ -30,7 +30,7 @@ abstract class BaseBindingFragment<VD: ViewDataBinding> : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is BaseBindingActivity<*>)
+        if (context is BindingActivity<*>)
             rootActivity = context
     }
 

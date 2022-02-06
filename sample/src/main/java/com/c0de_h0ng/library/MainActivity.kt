@@ -1,42 +1,22 @@
 package com.c0de_h0ng.library
 
-import android.os.Bundle
-import com.c0de_h0ng.library.base.BaseBindingActivity
+import android.view.View
 import com.c0de_h0ng.library.databinding.ActivityMainBinding
+import com.c0de_h0ng.library.util.ChlibLog
 
-class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
+class MainActivity : BindingActivity<ActivityMainBinding>(), View.OnClickListener {
 
     override val layoutRes: Int
         get() = R.layout.activity_main
 
     override fun bindingProperty() {
-
+        binding.onClick = this
     }
 
-    //private lateinit var binding: ActivityMainBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.textString = "!@#1323231"
-        //bindingView<ActivityMainBinding>(R.layout.activity_main)
-//        val  s = compareCurrentInputDate("yyyy-MM-dd HH:mm:ss", "2021.02.05 23:50:00")
-//        ChlibLog.debug("날짜 $s")
-        //binding.textString = "헬로 월드!"
-
-//        Handler().postDelayed({
-//            ChlibAlert.Builder(this)
-//                .setTitle("알림")
-//                .setContent("테스트")
-//                .build()
-//                .show()
-//        }, 200)
-
-//        ChlibAlert.Builder(this)
-//            .setTitle("알림")
-//            .setContent("테스트")
-//            .build()
-//            .show(R.drawable.chlib_white_radius_4dp_bg, R.drawable.chlib_white_radius_4dp_bg)
+    override fun onClick(v: View) {
+        if (v.id == R.id.btn_scroll_test) {
+            ChlibLog.debug("스크롤 테스트")
+        }
     }
 
 }
