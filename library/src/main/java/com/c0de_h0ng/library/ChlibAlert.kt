@@ -138,36 +138,35 @@ class ChlibAlert constructor(builder: Builder) : View.OnClickListener {
         activity?.let {
             if (!it.isDestroyed) {
                 val alert: ChlibAlertBinding = DataBindingUtil.inflate(it.layoutInflater, R.layout.chlib_alert, null, false)
-                alert.run {
-                    if (title != null && title!!.isNotEmpty()) {
-                        tvAlert.text = title
-                    }
-                    if (content != null && content!!.isNotEmpty()) {
-                        alertContent.text = content
-                    } else {
-                        alertContent.text = htmlText
-                    }
+                if (title != null && title!!.isNotEmpty()) {
+                    alert.tvAlert.text = title
+                }
+                if (content != null && content!!.isNotEmpty()) {
+                    alert.alertContent.text = content
+                } else {
+                    alert.alertContent.text = htmlText
+                }
 
-                    positiveClick = this@ChlibAlert
-                    negativeClick = this@ChlibAlert
-                    positiveString = positiveString
-                    negativeString = negativeString
-                    isPositiveBtn = isRightButton
-                    isNegativeBtn = isLeftButton
 
-                    if (!isLeftButton) {
-                        btnLeft.visibility = View.GONE
-                    } else {
-                        if (leftButtonBgResId > 0) {
-                            btnLeft.setBackgroundResource(leftButtonBgResId)
-                        }
+                alert.rightClick = this@ChlibAlert
+                alert.negativeClick = this@ChlibAlert
+                alert.positiveString = positiveString
+                alert.negativeString = negativeString
+                alert.isPositiveBtn = isRightButton
+                alert.isNegativeBtn = isLeftButton
+
+                if (!isLeftButton) {
+                    alert.btnLeft.visibility = View.GONE
+                } else {
+                    if (leftButtonBgResId > 0) {
+                        alert.btnLeft.setBackgroundResource(leftButtonBgResId)
                     }
-                    if (!isRightButton) {
-                        btnRight.visibility = View.GONE
-                    } else {
-                        if (rightButtonBgResId > 0) {
-                            btnRight.setBackgroundResource(rightButtonBgResId)
-                        }
+                }
+                if (!isRightButton) {
+                    alert.btnRight.visibility = View.GONE
+                } else {
+                    if (rightButtonBgResId > 0) {
+                        alert.btnRight.setBackgroundResource(rightButtonBgResId)
                     }
                 }
 
