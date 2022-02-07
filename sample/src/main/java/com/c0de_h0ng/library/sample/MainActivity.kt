@@ -1,7 +1,8 @@
-package com.c0de_h0ng.library
+package com.c0de_h0ng.library.sample
 
 import android.view.View
-import com.c0de_h0ng.library.databinding.ActivityMainBinding
+import com.c0de_h0ng.library.BindingActivity
+import com.c0de_h0ng.library.sample.databinding.ActivityMainBinding
 import com.c0de_h0ng.library.util.ChlibLog
 
 class MainActivity : BindingActivity<ActivityMainBinding>(), View.OnClickListener {
@@ -12,6 +13,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(), View.OnClickListene
     override fun bindingProperty() {
         binding.onClick = this
     }
+
+
 
     override fun onClick(v: View) {
         if (v.id == R.id.btn_scroll_test) {
